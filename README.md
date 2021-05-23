@@ -20,9 +20,9 @@ Basically Project using 2 differrent sites 1) Amazon.com 2)Google Image
 
 1) Visual studio - 2019
 
-2)Specflow Runner
+2) Specflow Runner
 
-3)Chrome Browser version-90+
+3) Chrome Browser version-90+
 
 4) Specflow add in for Visual studio
 
