@@ -1,9 +1,10 @@
 # HarperCollingsAssignmentBDD.specs
 Interview Assignment for QA Automation Selenium with BDD
 
-# Project Descriptio:- This project is created for interview purpose by using Selenium with Specflow.In this i implemented mousehover,Fileupload ui handles along with that implement BDD concepts
-as Scenario outline,Hooks
+# Project Descriptio:- This project is created for interview purpose by using Selenium with Specflow.In this i implemented mousehover,Fileupload ui handles along with that implement BDD concepts as Scenario outline,Hooks
+
 Basically Project using 2 differrent sites 1) Amazon.com 2)Google Image
+
 # Scenarios written:-
 1) As a consumer I want to change the shoping language
 
