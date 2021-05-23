@@ -1,7 +1,10 @@
 ﻿using HarperCollingsAssignment.specs.CommonUtility;
-using HarperCollingsAssignment.specs.Model;
 using HarperCollingsAssignment.specs.Pages;
+using NUnit.Framework;
+using OpenQA.Selenium;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using TechTalk.SpecFlow;
 
 namespace HarperCollingsAssignment.specs.Steps
@@ -10,48 +13,49 @@ namespace HarperCollingsAssignment.specs.Steps
     public class FileUploadPOCSteps : Base
     {
         #region "Object creation & instantiation"
-        GoogleDrive _gDrivePage = new GoogleDrive(Base.Driver);
+        GoogleImage _gImagePage = new GoogleImage(Base.Driver);
         AmazonPOCSteps _amazonPOCSteps = new AmazonPOCSteps();
         #endregion
 
-        [Given(@"I naviagte to the GoogleDrive Sign page")]
+        #region "Gherkins phrases"
+
+        //Phrases for navigation of Google Image page
+        [Given(@"I naviagte to the Google Image upload page")]
         public void GivenINaviagteToTheGoogleDriveSignPage()
         {
             Driver.Manage().Window.Maximize();
-            Base.GoToUrl("https://drive.google.com/");
+            Base.GoToUrl("https://www.google.com/imghp?hl=EN");
             _amazonPOCSteps.WaitUntilPageOrElementLoad();
-            _gDrivePage.GoToDriveSign.Click();
         }
-        
-        [When(@"I sign in with the below details")]
-        public void WhenISignInWithTheBelowDetails(Table table)
-        {
-            var dictionary = TableExtension.ToDictionary(table);
-            var test = dictionary["Username"];
 
-            _gDrivePage.UserName.SendKeys(dictionary["Username"]);
-            _gDrivePage.NextButton.Click();
-            _amazonPOCSteps.WaitUntilPageOrElementLoad();
-            _gDrivePage.Password.SendKeys(dictionary["Password"]);
-            _gDrivePage.NextButton.Click();
-        }
-        
-        [When(@"I upload a file")]
-        public void WhenIUploadAFile()
+        //Phrases for File upload
+        [When(@"I upload a file ""(.*)""")]
+        public void WhenIUploadAFile(String fileName)
         {
-            ScenarioContext.Current.Pending();
+            Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
+            //Return path of Base Directory
+            String FolderPath = AppDomain.CurrentDomain.BaseDirectory;
+            Console.WriteLine(FolderPath);
+            Console.WriteLine("file path is--->" + FolderPath + @"\" + "TestFiles\\" + fileName);
+            _gImagePage.ImageUploadIcon.Click();
+            _amazonPOCSteps.WaitUntilPageOrElementLoad();
+            _gImagePage.ImageUploadSection.Click();
+            _gImagePage.UploadButton.SendKeys(@FolderPath + @"\" + "TestFiles\\" + fileName);
+
         }
-        
-        [Then(@"I shoud be on GoogleDrive homepage")]
+
+        [Then(@"I shoud be on GoogleImage upload page")]
         public void ThenIShoudBeOnGoogleDriveHomepage()
         {
-            ScenarioContext.Current.Pending();
+            Assert.IsTrue(Driver.Title.Contains("Google Images"));
         }
-        
-        [Then(@"File should be uploaded")]
+
+        [Then(@"Image should be uploaded")]
         public void ThenFileShouldBeUploaded()
         {
-            ScenarioContext.Current.Pending();
+            Assert.IsTrue(_gImagePage.UploadSuccess.Displayed);
         }
+        #endregion
+
     }
 }

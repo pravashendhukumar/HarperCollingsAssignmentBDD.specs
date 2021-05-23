@@ -270,14 +270,6 @@ this.FeatureBackground();
 this.ConsumerAddTheBookToTheBasket("The Fisherman", ((string[])(null)));
 #line hidden
         }
-        
-        [TechTalk.SpecRun.ScenarioAttribute("consumer add the book to the basket, OnePlus", SourceLine=43)]
-        public virtual void ConsumerAddTheBookToTheBasket_OnePlus()
-        {
-#line 32
-this.ConsumerAddTheBookToTheBasket("OnePlus", ((string[])(null)));
-#line hidden
-        }
     }
 }
 #pragma warning restore

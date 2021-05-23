@@ -8,7 +8,7 @@ using TechTalk.SpecFlow;
 
 namespace HarperCollingsAssignment.specs.CommonUtility
 {
-    // This is the helper class that will provide an instance of WebDriver and perform clean up activity at the end
+    // This is the helper class that will provide an instance of WebDriver
     [Binding]
     public class Base
     {

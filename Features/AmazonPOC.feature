@@ -42,4 +42,4 @@ Scenario Outline: consumer add the book to the basket
 	Examples:
 		| ItemName      |
 		| The Fisherman |
-		| OnePlus       |
+		
